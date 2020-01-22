@@ -5,7 +5,12 @@
       <input class="form-control" [(ngModel)]="firstName" #fname="ngModel" name="fname"
       required minlength="4" [ngModelOptions]="{updateOn: 'submit'}">
       <div *ngIf="( fname.dirty || fname.touched ) && fname.invalid">
-        first Name invalid
+        <div *ngIf="fname.errors.required">
+          first name is Required
+        </div>
+        <div *ngIf="fname.errors.minlength">
+          first name must have length >=4
+        </div>
       </div>
     <label>Last Name:</label>
           <input class="form-control"  [(ngModel)]="lastName" #lname="ngModel" name="lname">

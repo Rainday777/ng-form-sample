@@ -17,6 +17,7 @@ export class TemplateFormComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    alert('form is valid : ' + this.firstName);
   }
 
 }

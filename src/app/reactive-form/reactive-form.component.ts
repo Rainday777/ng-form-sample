@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormValidatorDirective, nameValidator } from '../form-validator.directive';
 
 @Component({
   selector: 'app-reactive-form',
@@ -14,6 +15,14 @@ export class ReactiveFormComponent implements OnInit {
 
   });
 
+  get firstName() {
+    return this.exampleForm.controls.firstName;
+  }
+
+  get lastName() {
+    return this.exampleForm.controls.lastName;
+  }
+
   ngOnInit(): void {
   }
 
@@ -24,15 +33,14 @@ export class ReactiveFormComponent implements OnInit {
 
   createForm() {
     this.exampleForm = this.formBuilder.group({
-      firstName: ['', { validators: [Validators.required], updateOn: 'change' }],
+      firstName: ['', { validators: [Validators.required,  nameValidator('Wasan') ], updateOn: 'submit' }],
       lastName: ''
     });
   }
 
   onSubmit() {
-    alert('form is valid : ' + this.exampleForm.valid);
     this.exampleForm.controls.firstName.markAsTouched();
-    this.exampleForm.controls.lastName.setValue('Wasan');
+    this.exampleForm.controls.lastName.setValue('Khangmontree');
 
   }
 

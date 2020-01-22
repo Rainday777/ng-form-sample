@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-reactive-form',
+  templateUrl: './reactive-form.component.html',
+  styleUrls: ['./reactive-form.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'ng-form-sample';
+export class ReactiveFormComponent implements OnInit {
 
   exampleForm = new FormGroup({
     firstName: new FormControl(),
@@ -16,8 +15,9 @@ export class AppComponent implements OnInit {
   });
 
   ngOnInit(): void {
-
   }
+
+
   constructor(private formBuilder: FormBuilder) {
     this.createForm();
   }
@@ -35,8 +35,5 @@ export class AppComponent implements OnInit {
     this.exampleForm.controls.lastName.setValue('Wasan');
 
   }
-
-
-
 
 }

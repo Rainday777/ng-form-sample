@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-form.component.scss']
 })
 export class TemplateFormComponent implements OnInit {
-
+  submitted = false;
+  firstName = '';
+  lastName = '';
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  onSubmit() {
+    this.submitted = true;
   }
 
 }

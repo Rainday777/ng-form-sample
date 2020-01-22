@@ -1,1 +1,22 @@
-<p>template-form works!</p>
+
+<form (ngSubmit)="onSubmit()" #exampleForm="ngForm">
+  <div class="form-group">
+    <label>First Name:</label>
+      <input class="form-control" [(ngModel)]="firstName" #fname="ngModel" name="fname"
+      required minlength="4" [ngModelOptions]="{updateOn: 'submit'}">
+      <div *ngIf="( fname.dirty || fname.touched ) && fname.invalid">
+        first Name invalid
+      </div>
+    <label>Last Name:</label>
+          <input class="form-control"  [(ngModel)]="lastName" #lname="ngModel" name="lname">
+  </div>
+  <div><button type="submit">Register Template form</button></div>
+</form>
+<div>{{firstName}}</div>
+
+
+
+
+
+
+

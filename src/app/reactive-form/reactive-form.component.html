@@ -9,7 +9,7 @@
       </div>
       <div class="col-4">
         <div *ngIf="( firstName.dirty || firstName.touched )">
-          <div *ngIf="firstName.errors.required">
+          <div *ngIf="firstName?.errors?.required">
             firstName is required
           </div>
           <div *ngIf="firstName?.errors?.forbiddenName">

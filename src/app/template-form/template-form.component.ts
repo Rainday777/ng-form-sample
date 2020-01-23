@@ -20,6 +20,7 @@ export class TemplateFormComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.submitted = true;
     form.controls.fname.markAsTouched();
+    form.controls.lname.setValue('Khangmontree');
     alert('form is valid : ' + this.firstName);
   }
 

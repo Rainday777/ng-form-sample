@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { FormValidatorDirective, nameValidator } from '../form-validator.directive';
+import { nameValidator } from '../form-validator.directive';
 import { AgeValidator } from '../age-validator';
+import { SymbolValidator  } from '../symbol-validator';
 
 @Component({
   selector: 'app-reactive-form',
@@ -42,7 +43,8 @@ export class ReactiveFormComponent implements OnInit {
       age: ['', { validators: Validators.required,
                  asyncValidators: this.ageValidator.validate.bind(this.ageValidator), updateOn: 'submit' } ]
 
-    });
+    }, //{validators: [SymbolValidator]}
+    );
   }
 
   onSubmit() {

@@ -1,39 +1,55 @@
-
-<form [formGroup]="exampleForm" (ngSubmit)="onSubmit()" >
+<form [formGroup]="exampleForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label>First Name:</label>
-      <input class="form-control" formControlName="firstName">
-      <div *ngIf="( firstName.dirty || firstName.touched )">
-        <div *ngIf="firstName.errors.required">
-          firstName is required
-        </div>
-        <div *ngIf="firstName?.errors?.forbiddenName">
-          first Name not Equal {{firstName?.errors?.forbiddenName.value}}
+    <div class="row">
+      <div class="col-2">
+        <label>First Name:</label>
+      </div>
+      <div class="col-6">
+        <input class="form-control" formControlName="firstName">
+      </div>
+      <div class="col-4">
+        <div *ngIf="( firstName.dirty || firstName.touched )">
+          <div *ngIf="firstName.errors.required">
+            firstName is required
+          </div>
+          <div *ngIf="firstName?.errors?.forbiddenName">
+            first Name not Equal {{firstName?.errors?.forbiddenName.value}}
+          </div>
         </div>
       </div>
+    </div>
 
-
-    <label>Last Name:</label>
-    <input class="form-control" formControlName="lastName">
-
-    <label>age:</label>
-    <input type="number" class="form-control" formControlName="age">
-    <div *ngIf="( age.dirty || age.touched )">
-      <div *ngIf="age.errors?.required">
-        age is required
+    <div class="row">
+      <div class="col-2">
+        <label>Last Name:</label>
       </div>
-      <div *ngIf="age?.errors?.ageNotFound">
-        age ( {{age.value}} ) not contain in  list !
+      <div class="col-6">
+        <input class="form-control" formControlName="lastName">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <label>age:</label>
+      </div>
+      <div class="col-6">
+        <input type="number" class="form-control" formControlName="age">
+      </div>
+      <div class="col-4">
+        <div *ngIf="( age.dirty || age.touched )">
+          <div *ngIf="age.errors?.required">
+            age is required
+          </div>
+          <div *ngIf="age?.errors?.ageNotFound">
+            age ( {{age.value}} ) not contain in list !
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div><button type="submit">Register Reactive form</button></div>
+  <div class="row">
+    <div class="col-6"><button type="submit" class="btn btn-success">Register Reactive form</button></div>
+  </div>
 </form>
-<div>{{firstName.value}}</div>
-
-
-
-
-
-
-
+<div class="row">
+  <div class="col">{{firstName.value}}</div>
+</div>

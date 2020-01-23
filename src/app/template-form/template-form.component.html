@@ -1,40 +1,57 @@
-
 <form (ngSubmit)="onSubmit(exampleForm)" #exampleForm="ngForm">
   <div class="form-group">
-    <label>First Name:</label>
-      <input class="form-control" [(ngModel)]="firstName" #fname="ngModel" name="fname"
-      required minlength="4" [ngModelOptions]="{updateOn: 'submit'}">
-      <div *ngIf="( fname.dirty || fname.touched ) && fname.invalid">
-        <div *ngIf="fname.errors.required">
-          first name is Required
-        </div>
-        <div *ngIf="fname.errors.minlength">
-          first name must have length >=4
-        </div>
+    <div class="row">
+      <div class="col-2">
+        <label>First Name:</label>
       </div>
-    <label>Last Name:</label>
-          <input class="form-control"  [(ngModel)]="lastName" #lname="ngModel" name="lname">
-
-    <label>Age:</label>
-    <input type="number" class="form-control"  [(ngModel)]="ageNum" #age="ngModel" name="ageNum"
-     [ngModelOptions]="{updateOn: 'submit'}" required appAgeValidate>
-    <div *ngIf="( age.dirty || age.touched )">
-      <div *ngIf="age.errors?.required">
-        age is required
+      <div class="col-6">
+        <input class="form-control" [(ngModel)]="firstName" #fname="ngModel" name="fname" required minlength="4"
+          [ngModelOptions]="{updateOn: 'submit'}">
       </div>
-      <div *ngIf="age?.errors?.ageNotFound">
-        age ( {{age.value}} ) not contain in  list !
+      <div class="col-4">
+        <div *ngIf="( fname.dirty || fname.touched ) && fname.invalid">
+          <div *ngIf="fname.errors.required">
+            first name is Required
+          </div>
+          <div *ngIf="fname.errors.minlength">
+            first name must have length >=4
+          </div>
+        </div>
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-2"><label>Last Name:</label></div>
+      <div class="col-6"><input class="form-control" [(ngModel)]="lastName" #lname="ngModel" name="lname"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"><label>Age:</label></div>
+      <div class="col-6"><input type="number" class="form-control" [(ngModel)]="ageNum" #age="ngModel" name="ageNum"
+          [ngModelOptions]="{updateOn: 'submit'}" required appAgeValidate>
+      </div>
+      <div class="col-4">
+        <div *ngIf="( age.dirty || age.touched )">
+          <div *ngIf="age.errors?.required">
+            age is required
+          </div>
+          <div *ngIf="age?.errors?.ageNotFound">
+            age ( {{age.value}} ) not contain in list !
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
   </div>
-  <div><button type="submit">Register Template form</button></div>
+  <div class="row">
+    <div class="col-6"><button type="submit" class="btn btn-success">Register Template form</button></div>
+  </div>
 </form>
-<div><pre>{{ exampleForm.form.value | json }}</pre></div>
+<div class="row">
+  <div class="col-6">
+    <pre>{{ exampleForm.form.value | json }}</pre>
+  </div>
 
-
-
-
-
-
-
+</div>

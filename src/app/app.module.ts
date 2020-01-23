@@ -8,13 +8,15 @@ import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { FormValidatorDirective } from './form-validator.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { AgeValidateDirective } from './age-validate.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
-    FormValidatorDirective
+    FormValidatorDirective,
+    AgeValidateDirective
   ],
   imports: [
     BrowserModule,

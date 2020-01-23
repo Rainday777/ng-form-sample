@@ -1,5 +1,5 @@
 
-<form (ngSubmit)="onSubmit()" #exampleForm="ngForm">
+<form (ngSubmit)="onSubmit(exampleForm)" #exampleForm="ngForm">
   <div class="form-group">
     <label>First Name:</label>
       <input class="form-control" [(ngModel)]="firstName" #fname="ngModel" name="fname"
@@ -14,6 +14,19 @@
       </div>
     <label>Last Name:</label>
           <input class="form-control"  [(ngModel)]="lastName" #lname="ngModel" name="lname">
+
+    <label>Age:</label>
+    <input type="number" class="form-control"  [(ngModel)]="ageNum" #age="ngModel" name="ageNum"
+     [ngModelOptions]="{updateOn: 'submit'}" required appAgeValidate>
+    <div *ngIf="( age.dirty || age.touched )">
+      <div *ngIf="age.errors?.required">
+        age is required
+      </div>
+      <div *ngIf="age?.errors?.ageNotFound">
+        age ( {{age.value}} ) not contain in  list !
+      </div>
+    </div>
+
   </div>
   <div><button type="submit">Register Template form</button></div>
 </form>

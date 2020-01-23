@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { FormValidatorDirective, nameValidator } from '../form-validator.directive';
+import { AgeValidator } from '../age-validator';
 
 @Component({
   selector: 'app-reactive-form',
@@ -22,19 +23,25 @@ export class ReactiveFormComponent implements OnInit {
   get lastName() {
     return this.exampleForm.controls.lastName;
   }
+  get age() {
+    return this.exampleForm.controls.age;
+  }
 
   ngOnInit(): void {
   }
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private ageValidator: AgeValidator) {
     this.createForm();
   }
 
   createForm() {
     this.exampleForm = this.formBuilder.group({
       firstName: ['', { validators: [Validators.required,  nameValidator('Wasan') ], updateOn: 'submit' }],
-      lastName: ''
+      lastName: '',
+      age: ['', { validators: Validators.required,
+                 asyncValidators: this.ageValidator.validate.bind(this.ageValidator), updateOn: 'submit' } ]
+
     });
   }
 

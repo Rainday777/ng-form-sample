@@ -15,6 +15,17 @@
 
     <label>Last Name:</label>
     <input class="form-control" formControlName="lastName">
+
+    <label>age:</label>
+    <input type="number" class="form-control" formControlName="age">
+    <div *ngIf="( age.dirty || age.touched )">
+      <div *ngIf="age.errors?.required">
+        age is required
+      </div>
+      <div *ngIf="age?.errors?.ageNotFound">
+        age ( {{age.value}} ) not contain in  list !
+      </div>
+    </div>
   </div>
   <div><button type="submit">Register Reactive form</button></div>
 </form>
